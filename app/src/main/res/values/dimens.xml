@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Use for font size -->
+    <dimen name="font_display">32sp</dimen>
+    <dimen name="font_heading1">24sp</dimen>
+    <dimen name="font_heading2">20sp</dimen>
+    <dimen name="font_title">16sp</dimen>
+    <dimen name="font_body">12sp</dimen>
+    <dimen name="font_label">12sp</dimen>
+    <dimen name="font_caption">10sp</dimen>
+
+    <!-- Use for padding & margin -->
+    <dimen name="spacing_64dp">64dp</dimen>
+    <dimen name="spacing_40dp">40dp</dimen>
+    <dimen name="spacing_32dp">32dp</dimen>
+    <dimen name="spacing_28dp">28dp</dimen>
+    <dimen name="spacing_24dp">24dp</dimen>
+    <dimen name="spacing_20dp">20dp</dimen>
+    <dimen name="spacing_16dp">16dp</dimen>
+    <dimen name="spacing_12dp">12dp</dimen>
+    <dimen name="spacing_10dp">10dp</dimen>
+    <dimen name="spacing_8dp">8dp</dimen>
+    <dimen name="spacing_4dp">4dp</dimen>
+
+    <!-- Use for icon size -->
+    <dimen name="icon_32dp">32dp</dimen>
+    <dimen name="icon_24dp">24dp</dimen>
+
+    <!-- Use for image size -->
+    <dimen name="image_300dp">300dp</dimen>
+    <dimen name="image_240dp">240dp</dimen>
+    <dimen name="image_120dp">120dp</dimen>
+    <dimen name="image_56dp">56dp</dimen>
+    <dimen name="image_48dp">48dp</dimen>
+    <dimen name="image_40dp">40dp</dimen>
+    <dimen name="image_32dp">32dp</dimen>
+
+    <!-- Use for button size -->
+    <dimen name="button_height_56dp">56dp</dimen>
+    <dimen name="button_height_32dp">32dp</dimen>
+    <dimen name="button_width_120dp">120dp</dimen>
+
+    <!-- Use for border radius -->
+    <dimen name="border_radius_12dp">12dp</dimen>
+    <dimen name="border_radius_10dp">10dp</dimen>
+    <dimen name="border_radius_8dp">8dp</dimen>
+
+    <!-- Use for elevation -->
+    <dimen name="elevation_12dp">12dp</dimen>
+    <dimen name="elevation_8dp">8dp</dimen>
+    <dimen name="elevation_4dp">4dp</dimen>
+
+    <!-- Use for bar size -->
+    <dimen name="top_app_bar_height">60dp</dimen>
+    <dimen name="navigation_bar_height">120dp</dimen>
+    <dimen name="search_bar_height">60dp</dimen>
+
+    <!-- Use for other components -->
+    <dimen name="fliter_height">32dp</dimen>
+    <dimen name="input_field_height">44dp</dimen>
+    <dimen name="card_height_48dp">48dp</dimen>
+    <dimen name="card_height_56dp">56dp</dimen>
+    <dimen name="card_height_72dp">72dp</dimen>
+
+    <dimen name="bottom_offset">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+</resources>

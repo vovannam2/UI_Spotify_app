@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Spotify_app</string>
+
+    <string name="app_description">Âm nhạc dành cho mọi người</string>
+    <string name="button_signup">Đăng ký </string>
+    <string name="button_login">Đăng Nhập </string>
+
+
+</resources>

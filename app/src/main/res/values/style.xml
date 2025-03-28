@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Customize font style-->
+    <!-- TODO: note usage -->
+    <style name="TextAppearance.App.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/lexend_medium</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/lexend_medium</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/lexend_medium</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/lexend_bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+<!--
+    <style name="Caption" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/lexend_semibold</item>
+        <item name="android:textSize">@dimen/font_caption</item>
+    </style>
+-->
+
+    <!--Custom button style-->
+    <style name="PrimaryFilledButton" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/TextAppearance.App.TitleMedium</item>
+        <item name="android:textColor">@color/neutral5</item>
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:layout_height">@dimen/button_height_56dp</item>
+    </style>
+
+    <style name="TextButton" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/TextAppearance.App.TitleMedium</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="ExtendedFloatingActionButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="android:textAppearance">@style/TextAppearance.App.TitleMedium</item>
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/neutral5</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_24dp</item>
+    </style>
+    
+
+    <!-- Custom text input field -->
+    <style name="TextInputFilledStyle" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:layout_marginBottom">@dimen/spacing_24dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/border_radius_8dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/border_radius_8dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/border_radius_8dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/border_radius_8dp</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.App.BodySmall</item>
+        <item name="helperTextTextColor">@color/neutral3</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorTextColor">@color/error</item>
+        <item name="errorIconTint">@color/error</item>
+    </style>
+
+    <style name="TextInputOutlinedStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginBottom">@dimen/spacing_24dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/border_radius_8dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/border_radius_8dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/border_radius_8dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/border_radius_8dp</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.App.BodySmall</item>
+        <item name="helperTextTextColor">@color/neutral3</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="colorOnSecondaryContainer">@color/neutral5</item>
+        <item name="colorOnSurface">@color/neutral5</item>
+    </style>
+
+
+</resources>

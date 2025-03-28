@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#0052F9</color>
+    <color name="primary_light_1">#EBF2FF</color>
+    <color name="primary_light_2">#E2ECFF</color>
+    <color name="neutral0">#000225</color>
+    <color name="neutral1">#121337</color>
+    <color name="neutral2">#191A4F</color>
+    <color name="neutral3">#A7A7A7</color>
+    <color name="neutral4">#D9D9D9</color>
+    <color name="neutral5">#FFFFFF</color>
+    <color name="accent_verified">#3770E5</color>
+    <color name="accent_error">#FFA7A9</color>
+    <color name="error">#E45B5F</color>
+    <color name="pure_color">#000000</color>
+    <color name="overlay">#00000059</color>
+    <color name="primary_disabled">#224DA3</color>
+    <color name="transparent">#00000000</color>
+</resources>
