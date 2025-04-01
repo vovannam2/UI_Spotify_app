@@ -16,4 +16,5 @@
     <color name="overlay">#00000059</color>
     <color name="primary_disabled">#224DA3</color>
     <color name="transparent">#00000000</color>
+    <color name="main_background">#19191b</color>
 </resources>

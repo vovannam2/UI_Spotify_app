@@ -22,6 +22,12 @@
         android:theme="@style/Theme.Spotify_app"
         tools:targetApi="31">
         <activity
+            android:name=".activities.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.IntroActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.auth.GetStartedActivity"
             android:exported="false" />
         <activity

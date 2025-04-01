@@ -33,6 +33,10 @@
         <item name="android:textColor">@color/neutral0</item>
     </style>
 
+    <style name="roundedImageRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
     <!--<style name="SeekBar" parent="Widget.AppCompat.SeekBar">
         <item name="android:thumb">@drawable/seekbar_white_dot</item>
         <item name="android:progressBackgroundTint">@color/neutral3</item>
