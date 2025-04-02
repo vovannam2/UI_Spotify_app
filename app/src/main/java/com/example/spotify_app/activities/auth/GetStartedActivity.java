@@ -30,24 +30,19 @@ public class GetStartedActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        String language = SharedPrefManagerLanguage.getInstance(getApplicationContext()).getLanguage();
-        setLocale(language);
-        boolean isDarkMode = SharedPrefManagerTheme.getInstance(this).loadNightModeState();
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-        // set layout view
-         setContentView(R.layout.activity_get_started);
-        signInBtn =(MaterialButton) findViewById(R.id.signInBtn);
-        signUpBtn =(MaterialButton) findViewById(R.id.signUpBtn);
-    }
-    private void setLocale(String language) {
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+//        String language = SharedPrefManagerLanguage.getInstance(getApplicationContext()).getLanguage();
+//        setLocale(language);
+//        boolean isDarkMode = SharedPrefManagerTheme.getInstance(this).loadNightModeState();
+//        if (isDarkMode) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        }
+//        // set layout view
+//         setContentView(R.layout.activity_get_started);
+//        signInBtn =(MaterialButton) findViewById(R.id.signInBtn);
+//        signUpBtn =(MaterialButton) findViewById(R.id.signUpBtn);
+//
+
     }
 }

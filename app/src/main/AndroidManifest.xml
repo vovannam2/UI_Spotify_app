@@ -22,10 +22,16 @@
         android:theme="@style/Theme.Spotify_app"
         tools:targetApi="31">
         <activity
-            android:name=".activities.auth.LoginActivity"
+            android:name=".activities.auth.ResetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.IntroActivity"
+            android:name=".activities.auth.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.auth.OtpVerifyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.auth.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".activities.auth.GetStartedActivity"
@@ -34,7 +40,7 @@
             android:name=".activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

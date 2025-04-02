@@ -25,10 +25,10 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đăng nhập"
-                android:textColor="@color/neutral5"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="128dp"
+                android:text="Đăng nhập"
+                android:textColor="@color/neutral5"
                 android:textSize="40sp"
                 android:textStyle="bold"/>
 
@@ -36,7 +36,7 @@
                 android:id="@+id/emailTxt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="128dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
@@ -64,12 +64,61 @@
                 android:background="@drawable/btn_background"/>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/forgotPasswordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Forget Your Password"
+                android:text="Quên mật khẩu"
                 android:textColor="@color/neutral5"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/btn_background"
+                android:text="Đăng nhập"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/neutral5"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLoginWithGoogle"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/btn_background"
+                android:drawableEnd="@drawable/ic_google"
+                android:text="Đăng nhập với Google"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/neutral5"/>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Bạn chưa có tải khoản?"
+                android:textColor="@color/neutral5"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/signUpText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng kí ngay"
+                android:textColor="@color/neutral5"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

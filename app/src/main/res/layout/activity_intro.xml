@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="@color/main_background"
     tools:context=".activities.IntroActivity">
 
@@ -18,35 +19,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="700dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/gradient_color_background">
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="360dp"
-                    android:layout_height="360dp"
+                    android:layout_width="340dp"
+                    android:layout_height="340dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.32999998"
+                    app:layout_constraintVertical_bias="0.16000003"
                     app:srcCompat="@drawable/circle_gradient" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_margin="8dp"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/spotify"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="@+id/imageView2"
                     app:shapeAppearanceOverlay="@style/roundedImageRounded"
-                    app:strokeWidth="1dp"
-                    tools:srcCompat="@drawable/spotify" />
+                    app:strokeWidth="1dp" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -78,22 +79,22 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="300dp"
-                android:background="@drawable/background_gradient_2"
+                android:layout_height="match_parent"
                 android:layout_marginStart="64dp"
                 android:layout_marginEnd="64dp"
-                android:layout_height="match_parent">
+                android:background="@drawable/background_gradient_2">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
+                    android:id="@+id/btnGetin"
+                    style="@android:style/Widget.Button"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Get In"
+                    android:layout_margin="32dp"
                     android:background="@drawable/intro_btn_background"
-                    style="@android:style/Widget.Button"
+                    android:gravity="center"
+                    android:text="Get in"
                     android:textColor="@color/neutral5"
                     android:textSize="18sp"
-                    android:gravity="center"
-                    android:layout_margin="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

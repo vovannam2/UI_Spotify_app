@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+  <!-- Nền trắng -->
+  <path
+      android:pathData="M0,0H512V512H0"
+      android:fillColor="#FFFFFF"/>
+
+  <!-- Hình tròn màu xanh lá -->
+  <path
+      android:pathData="M256,256m-134,0a134,134 0,1 1,268 0a134,134 0,1 1,-268 0"
+      android:fillColor="#1ED760"/>
+
+  <!-- Ba đường cong trắng mô phỏng sóng âm -->
+  <path
+      android:pathData="M165,205c55,-15 121,-11 176,18"
+      android:strokeWidth="25"
+      android:fillColor="#00000000"
+      android:strokeColor="#fff"
+      android:strokeLineCap="round"/>
+
+  <path
+      android:pathData="M175,260c45,-12 108,-9 152,18"
+      android:strokeWidth="21"
+      android:fillColor="#00000000"
+      android:strokeColor="#fff"
+      android:strokeLineCap="round"/>
+
+  <path
+      android:pathData="M180,310c40,-9 86,-14 133,15"
+      android:strokeWidth="16"
+      android:fillColor="#00000000"
+      android:strokeColor="#fff"
+      android:strokeLineCap="round"/>
+</vector>

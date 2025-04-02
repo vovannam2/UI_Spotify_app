@@ -1,0 +1,157 @@
+<resources>
+    <!-- Application introduction -->
+    <string name="app_name">Spotify</string>
+    <string name="app_description">Âm nhạc dành cho mọi người</string>
+
+    <!--  Topic Album  -->
+    <string name="trending_title">Top thịnh hành</string>
+    <string name="trending_intro">Khám phá các bài hát được nghe nhiều nhất</string>
+    <string name="favorite_title">Bài hát yêu thích</string>
+    <string name="favorite_intro">Các bài hát được mọi người yêu thích nhất</string>
+    <string name="topartist_title">Nghệ sĩ hàng đầu</string>
+    <string name="topartist_intro">Danh sách các nghệ sĩ có lượt theo dõi cao nhất</string>
+    <string name="newreleased_title">Mới phát hành</string>
+    <string name="newreleased_intro">Thưởng thức các bài hát chất lượng vừa ra mắt</string>
+
+    <string name="setting_title">Cài đặt</string>
+
+    <!-- Menu items for bottom navigation bar and bottom sheet -->
+    <string name="menu_item_home">Trang chủ</string>
+    <string name="menu_item_search">Tìm kiếm</string>
+    <string name="menu_item_library">Thư viện</string>
+    <string name="menu_item_profile">Hồ sơ</string>
+    <string name="menu_item_publish">Phát hành</string>
+    <string name="menu_item_add_favourite">Thêm vào yêu thích</string>
+    <string name="menu_item_add_playlist">Thêm vào danh sách phát</string>
+    <string name="menu_item_remove_favourite">Xóa khỏi yêu thích</string>
+    <string name="menu_item_remove_playlist">Xóa khỏi danh sách phát</string>
+
+
+    <!-- Menu item for tab layout in Library -->
+    <string name="menu_item_my_playlist">Danh sách phát của tôi</string>
+    <string name="menu_item_my_favourite">Bài hát yêu thích</string>
+
+    <!-- Label -->
+    <string name="label_add_new_playlist">Tạo danh sách phát mới</string>
+    <string name="label_add_new_favourite">Thêm bài hát yêu thích</string>
+    <string name="label_songs">%d bài hát</string>
+    <string name="label_enter_otp">Nhập mã OTP</string>
+    <string name="label_recomendation">Gợi ý cho bạn</string>
+    <string name="label_your_playlist">Danh sách phát của bạn</string>
+    <string name="label_clear_choices">Xóa lựa chọn</string>
+    <string name="label_see_all">Xem tất cả</string>
+    <string name="label_delete_history">Xóa lịch sử tìm kiếm</string>
+    <string name="label_comment">Bình luận</string>
+    <string name="label_hello_user">Chào %s 👋</string>
+    <string name="label_top_trending">🔥 Top thịnh hành</string>
+    <string name="label_top_favorite">❤️ Mọi người yêu thích</string>
+    <string name="label_top_artist">👑 Nghệ sĩ hàng đầu</string>
+    <string name="label_new_released">✨ Mới ra mắt</string>
+    <string name="label_topic">🎧 Chủ đề</string>
+    <string name="label_recommended">🌟 Đề xuất cho bạn</string>
+    <string name="label_popular_song">🔥 Bài hát phổ biến</string>
+    <string name="label_forget_password">Quên mật khẩu?</string>
+    <string name="label_not_have_account">Chưa có tài khoản?</string>
+    <string name="label_have_account">Đã có tài khoản?</string>
+    <string name="label_gender">Giới tính</string>
+    <string name="label_system">Hệ thống</string>
+    <string name="label_language">Ngôn ngữ</string>
+    <string name="label_language_system">Hệ thống</string>
+    <string name="label_language_vietnamese">Tiếng Việt</string>
+    <string name="label_language_english">Tiếng Anh</string>
+    <string name="label_dark_mode">Giao diện tối</string>
+    <string name="label_account">Tài khoản</string>
+    <string name="label_change_password">Đổi mật khẩu</string>
+    <string name="label_logout">Đăng xuất</string>
+    <string name="label_notications">Thông báo</string>
+    <string name="label_profile">Tài khoản</string>
+    <string name="label_lastname">Họ</string>
+    <string name="label_firstname">Tên</string>
+    <string name="label_email">Email</string>
+
+    <!-- Button text -->
+    <string name="button_signup">Đăng ký</string>
+    <string name="button_login">Đăng nhập</string>
+    <string name="button_continue">Tiếp tục</string>
+    <string name="button_verify">Xác nhận</string>
+    <string name="button_get_otp">Nhận mã OTP</string>
+    <string name="button_create">Tạo</string>
+    <string name="button_add">Thêm</string>
+    <string name="button_delete_playlist">Xóa danh sách phát</string>
+    <string name="button_cancel">Hủy</string>
+    <string name="button_delete">Xóa</string>
+    <string name="button_ok">Đồng ý</string>
+    <string name="button_post">Đăng</string>
+    <string name="button_save">Lưu</string>
+    <string name="button_change_password">Đổi mật khẩu</string>
+    <string name="button_reset_password">Lấy lại mật khẩu</string>
+    <string name="button_loggin_google">Đăng nhập với Google</string>
+
+    <!-- InputField -->
+    <string name="hint_email">Nhập email của bạn</string>
+    <string name="hint_password">Nhập mật khẩu của bạn</string>
+    <string name="hint_retype_password">Nhập lại mật khẩu của bạn</string>
+    <string name="hint_new_password">Nhập mật khẩu mới của bạn</string>
+    <string name="hint_retype_new_password">Nhập lại mật khẩu mới của bạn</string>
+    <string name="hint_surname">Nhập họ</string>
+    <string name="hint_firstname">Nhập tên</string>
+    <string name="hint_phone_number">Nhập số điện thoại của bạn</string>
+    <string name="hint_old_password">Nhập mật khẩu cũ của bạn</string>
+    <string name="hint_search">Tìm bài hát…</string>
+    <string name="check_box_remember">Ghi nhớ đăng nhập</string>
+    <string name="helper_text_email">Email này được sử dụng để đăng nhập tài khoản của bạn</string>
+    <string name="helper_text_password">Mật khẩu tối thiểu 6 kí tự, bao gồm cả chữ cái viết hoa, viết thường, chữ số và kí tự đặc biệt</string>
+    <string name="error_required_field">Vui lòng nhập trường này</string>
+    <string name="error_invalid_email">Vui lòng nhập email hợp lệ</string>
+    <string name="error_invalid_phone">Vui lòng nhập số điện thoại hợp lệ</string>
+    <string name="error_invalid_password">Vui lòng nhập mật khẩu hợp lệ</string>
+    <string name="error_password_not_match">Mật khẩu không khớp</string>
+    <string name="error_wrong_account_infor">Tên đăng nhập hoặc mật khẩu không đúng</string>
+
+    <string name="radio_choice_male">Nam</string>
+    <string name="radio_choice_female">Nữ</string>
+    <string name="playlist_name_placeholder">Danh sách phát mới</string>
+    <string name="toast_added_song_to_favourite">Thêm bài hát vào yêu thích thành công</string>
+    <string name="toast_removed_song_to_favourite">Xóa bài hát khỏi yêu thích thành công</string>
+    <string name="toast_created_playlist">Tạo danh sách phát thành công</string>
+    <string name="toast_deleted_playlist">Xóa danh sách phát thành công</string>
+    <string name="toast_loged_in">Đăng nhập thành công</string>
+    <string name="toast_followed">Bạn đã theo dõi nghệ sĩ này</string>
+    <string name="toast_unfollowed">Bạn đã bỏ theo dõi nghệ sĩ này</string>
+
+    <string name="client_id">90467436569-ibtnp170t1rb3fhksb8nhp99b0garii8.apps.googleusercontent.com</string>
+    <string name="toast_added_song_to_playlist">Thêm bài hát vào danh sách phát thành công</string>
+    <string name="toast_song_already_in_playlist">Đã bỏ qua các bài hát có trong danh sách phát</string>
+    <string name="error_playlist_name_exists">Danh sách phát này đã tồn tại</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_confirm_delete">Xác nhận xóa</string>
+    <string name="dialog_message_confirm_delete">Bạn có chắc chắn muốn xóa danh sách phát này không?</string>
+    <string name="dialog_title_confirm_restart">Khởi động lại ứng dụng</string>
+    <string name="dialog_message_language_confirm_restart">Vui lòng khởi động lại ứng dụng để cập nhật ngôn ngữ</string>
+    <string name="dialog_message_theme_confirm_restart">Vui lòng khởi động lại ứng dụng để cập nhật giao diện</string>
+
+
+    <!--Notification-->
+    <string name="channel_new_song">My Channel</string>
+    <string name="channel_description">Description Channel</string>
+    <string name="toast_updated_playlist_name">Cập nhật tên danh sách phát thành công</string>
+    <string name="toast_removed_song_from_playlist">Đã xóa khỏi danh sách phát</string>
+    <string name="toast_forbiden">Bạn không thể xóa bài hát khỏi danh sách phát này</string>
+    <string name="title_activity_artist" translatable="false">ArtistActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
+
+
+    <string name="followed">Đã theo dõi</string>
+    <string name="follow">Theo dõi</string>
+    <string name="view_more">Xem thêm</string>
+    <string name="label_artist">Nghệ sĩ</string>
+    <string name="tab_all">Tất cả</string>
+    <string name="tab_songs">Bài hát</string>
+    <string name="tab_artist">Nghệ sĩ</string>
+    <string name="new_release">✨ Mới phát hành</string>
+</resources>
