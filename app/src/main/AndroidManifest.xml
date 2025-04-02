@@ -33,15 +33,18 @@
         <activity
             android:name=".activities.auth.LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.auth.GetStartedActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activities.auth.GetStartedActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.IntroActivity"
-            android:exported="true">
+            android:name=".activities.auth.GetStartedActivity"
+            android:exported="true" >
+<!--        <activity-->
+<!--            android:name=".activities.IntroActivity"-->
+<!--            android:exported="true">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
