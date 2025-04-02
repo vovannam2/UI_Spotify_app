@@ -15,5 +15,6 @@
     <color name="pure_color">#000000</color>
     <color name="overlay">#00000059</color>
     <color name="primary_disabled">#224DA3</color>
+    <color name="purple">#2986CC</color>
     <color name="transparent">#00000000</color>
 </resources>

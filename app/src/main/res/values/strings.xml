@@ -4,6 +4,12 @@
     <string name="app_description">Âm nhạc dành cho mọi người</string>
     <string name="button_signup">Đăng ký </string>
     <string name="button_login">Đăng Nhập </string>
-
-
+    <string name="hint_email">NHập email </string>
+    <string name="hint_password">Nhập password </string>
+    <string name="check_box_remember">remember</string>
+    <string name="button_loggin_google">Đăng Nhập với google</string>
+    <string name="label_forget_password">Quên mật khẩu </string>
+    <string name="button_reset_password">Lấy lại mật khẩu</string>
+    <string name="label_not_have_account"> Chưa có tài khoản </string>
+    <string name="button_get_otp">Đăng ký </string>
 </resources>

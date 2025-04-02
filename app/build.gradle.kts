@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.spotify_app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.spotify_app"

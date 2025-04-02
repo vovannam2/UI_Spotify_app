@@ -1,7 +1,9 @@
 package com.example.spotify_app.activities.auth;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,10 +41,27 @@ public class GetStartedActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
         // set layout view
-         setContentView(R.layout.activity_get_started);
+        setContentView(R.layout.activity_get_started);
         signInBtn =(MaterialButton) findViewById(R.id.signInBtn);
         signUpBtn =(MaterialButton) findViewById(R.id.signUpBtn);
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GetStartedActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GetStartedActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
     private void setLocale(String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
