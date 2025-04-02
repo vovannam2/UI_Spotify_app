@@ -89,8 +89,26 @@
                 android:text="Đã có tài khoản? Đăng nhập"
                 android:textColor="@color/purple"
                 android:textSize="15dp"
+                android:clickable="true"
                 android:textStyle="bold" />
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </LinearLayout>
