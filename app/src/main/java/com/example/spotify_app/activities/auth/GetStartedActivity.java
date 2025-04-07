@@ -27,45 +27,53 @@ public class GetStartedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setLocale(SharedPrefManagerLanguage.getInstance(getApplicationContext()).getLanguage());
+        EdgeToEdge.enable(this);
 
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_UNSPECIFIED) {
-            boolean isDarkMode = SharedPrefManagerTheme.getInstance(this).loadNightModeState();
-            AppCompatDelegate.setDefaultNightMode(
-                    isDarkMode ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
-            );
+        // Set ngôn ngữ
+        String language = SharedPrefManagerLanguage.getInstance(getApplicationContext()).getLanguage();
+        setLocale(language);
+
+        // Set chế độ tối
+        boolean isDarkMode = SharedPrefManagerTheme.getInstance(this).loadNightModeState();
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
+        // Giao diện
         setContentView(R.layout.activity_get_started);
 
-        signUpBtn = findViewById(R.id.signUpBtn);
-        signInBtn = findViewById(R.id.signInBtn);
-
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GetStartedActivity.this, SignUpActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        // Căn chỉnh lề khi có status bar, navigation bar
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ln1), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
 
-        signInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GetStartedActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        // Ánh xạ nút
+        signInBtn = findViewById(R.id.signInBtn);
+        signUpBtn = findViewById(R.id.signUpBtn);
+
+        // Xử lý sự kiện
+        signInBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(GetStartedActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        signUpBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(GetStartedActivity.this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
-
 
     private void setLocale(String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
-        Configuration config = getResources().getConfiguration();
-        config.setLocale(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }
