@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="@dimen/spacing_16dp"
+    android:paddingEnd="@dimen/spacing_16dp">
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_delete_playlist"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:text="@string/button_delete_playlist"
+        style="@style/OutlinedButton"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTopPlaylistOptionShuffle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?attr/materialIconButtonStyle"
+        app:icon="@drawable/ic_24dp_outline_shuffle_on"
+        app:iconSize="24dp"
+        app:iconTint="@color/neutral3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btnTopPlaylistOptionPlay"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTopPlaylistOptionPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?attr/materialIconButtonStyle"
+        app:icon="@drawable/ic_32dp_filled_play"
+        app:iconSize="32dp"
+        app:iconTint="@android:color/white"
+        android:backgroundTint="@color/primary"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

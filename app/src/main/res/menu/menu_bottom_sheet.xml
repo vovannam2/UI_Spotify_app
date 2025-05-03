@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_item_favourite"
+        android:title="@string/menu_item_add_favourite"
+        android:icon="@drawable/ic_24dp_outline_favorite"/>
+
+    <item android:id="@+id/menu_item_add_playlist"
+        android:title="@string/menu_item_add_playlist"
+        android:icon="@drawable/ic_24dp_outline_library_add"/>
+
+    <item android:id="@+id/menu_item_remove_playlist"
+        android:title="@string/menu_item_remove_playlist"
+        android:icon="@drawable/ic_24dp_outline_library_remove"/>
+</menu>

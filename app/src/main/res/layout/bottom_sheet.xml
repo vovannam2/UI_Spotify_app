@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/standard_bottom_sheet"
+        style="@style/Widget.Material3.BottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="?attr/colorSurface"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="300dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:orientation="vertical">
+
+
+
+        <!-- Bottom sheet contents. -->
+        <include layout="@layout/item_song"
+            android:id="@+id/item_song"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_16dp"
+            android:layout_marginStart="@dimen/spacing_16dp"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_24dp"
+            android:layout_marginEnd="@dimen/spacing_24dp"
+            android:layout_marginTop="@dimen/spacing_8dp"
+            app:dividerColor="#3A3A67"/>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            app:itemTextAppearance="@style/TextAppearance.App.LabelLarge"
+            app:menu="@menu/menu_bottom_sheet"/>
+
+
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

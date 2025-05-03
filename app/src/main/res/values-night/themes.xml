@@ -1,7 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Spotify_app" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Music_app" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryContainer">@color/primary</item>
+        <item name="colorOnPrimaryContainer">@color/neutral0</item>
+        <item name="colorOnSurfaceVariant">@color/neutral5</item>
+        <item name="colorOnSurface">@color/primary</item>
+        <item name="colorOnSecondaryContainer">@color/primary</item>
+        <item name="colorSurfaceContainerHighest">@color/neutral2</item>
+        <item name="colorError">@color/error</item>
+        <item name="android:colorBackground">@color/neutral0</item>
+        <item name="android:statusBarColor">@color/neutral0</item>
+        <item name="colorSurface">#212239</item>
+        <item name="colorSecondary">@color/neutral5</item>
+
+        <item name="fontFamily">@font/lexend_semibold</item>
     </style>
+    <style name="NeutralFilledButton" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/TextAppearance.App.TitleMedium</item>
+        <item name="android:textColor">@color/neutral0</item>
+        <item name="android:backgroundTint">@color/neutral5</item>
+    </style>
+
+    <style name="OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textAppearance">@style/TextAppearance.App.TitleMedium</item>
+        <item name="boxStrokeColor">@color/neutral5</item>
+        <item name="android:textColor">@color/neutral5</item>
+    </style>
+
+    <style name="SeekBar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:thumb">@drawable/seekbar_white_dot</item>
+        <item name="android:progressBackgroundTint">@color/neutral3</item>
+        <item name="android:progressTint">@color/neutral5</item>
+    </style>
+
 </resources>

@@ -44,19 +44,7 @@ public class GetStartedActivity extends AppCompatActivity {
          setContentView(R.layout.activity_get_started);
         signInBtn =(MaterialButton) findViewById(R.id.signInBtn);
         signUpBtn =(MaterialButton) findViewById(R.id.signUpBtn);
-        String language = SharedPrefManagerLanguage.getInstance(getApplicationContext()).getLanguage();
-        setLocale(language);
-        boolean isDarkMode = SharedPrefManagerTheme.getInstance(this).loadNightModeState();
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-        // set layout view
-        setContentView(R.layout.activity_get_started);
-        signInBtn =(MaterialButton) findViewById(R.id.signInBtn);
-        signUpBtn =(MaterialButton) findViewById(R.id.signUpBtn);
-
+        
 
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,11 +71,5 @@ public class GetStartedActivity extends AppCompatActivity {
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 
-    private void setLocale(String language) {
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-    }
+
 }

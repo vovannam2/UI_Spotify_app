@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.3"
+agp = "8.9.1"
 multidex = "2.0.1"
 cloudinary = "2.5.0"
 retrofit = "2.9.0"

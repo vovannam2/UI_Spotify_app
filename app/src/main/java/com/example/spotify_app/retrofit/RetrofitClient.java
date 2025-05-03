@@ -1,9 +1,6 @@
 package com.example.spotify_app.retrofit;
 
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,7 +10,7 @@ public class RetrofitClient {
     public static Retrofit getRetrofit() {
         if(retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.0.230.241:8989/api/v1/")
+                    .baseUrl("http://172.16.0.111:8989/api/v1/")
                    // .client(getClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

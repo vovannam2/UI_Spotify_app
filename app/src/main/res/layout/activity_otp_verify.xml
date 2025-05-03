@@ -36,71 +36,120 @@
             android:orientation="horizontal"
             android:layout_marginTop="32dp"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:paddingRight="16dp"
+            android:gravity="center"
+            android:baselineAligned="false">
 
             <EditText
                 android:id="@+id/opt1Txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/neutral5"
-                style="@style/TextAppearance.App.HeadlineLarge"
-                android:gravity="center" />
+                android:layout_width="48dp"
+                android:layout_height="64dp"
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/accent_verified"
+                android:background="@drawable/otp_box_background"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginHorizontal="4dp"
+                android:cursorVisible="true"
+                android:focusableInTouchMode="true"/>
 
             <EditText
                 android:id="@+id/opt2Txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/neutral5"
-                style="@style/TextAppearance.App.HeadlineLarge"
-                android:gravity="center" />
+                android:layout_width="48dp"
+                android:layout_height="64dp"
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/accent_verified"
+                android:background="@drawable/otp_box_background"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginHorizontal="4dp"
+                android:cursorVisible="true"
+                android:focusableInTouchMode="true"/>
 
             <EditText
                 android:id="@+id/opt3Txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/neutral5"
-                style="@style/TextAppearance.App.HeadlineLarge"
-                android:gravity="center" />
+                android:layout_width="48dp"
+                android:layout_height="64dp"
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/accent_verified"
+                android:background="@drawable/otp_box_background"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginHorizontal="4dp"
+                android:cursorVisible="true"
+                android:focusableInTouchMode="true"/>
 
             <EditText
                 android:id="@+id/opt4Txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/neutral5"
-                style="@style/TextAppearance.App.HeadlineLarge"
-                android:gravity="center" />
+                android:layout_width="48dp"
+                android:layout_height="64dp"
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/accent_verified"
+                android:background="@drawable/otp_box_background"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginHorizontal="4dp"
+                android:cursorVisible="true"
+                android:focusableInTouchMode="true"/>
 
             <EditText
                 android:id="@+id/opt5Txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/neutral5"
-                style="@style/TextAppearance.App.HeadlineLarge"
-                android:gravity="center" />
+                android:layout_width="48dp"
+                android:layout_height="64dp"
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/accent_verified"
+                android:background="@drawable/otp_box_background"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginHorizontal="4dp"
+                android:cursorVisible="true"
+                android:focusableInTouchMode="true"/>
 
             <EditText
                 android:id="@+id/opt6Txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/neutral5"
-                style="@style/TextAppearance.App.HeadlineLarge"
-                android:gravity="center" />
+                android:layout_width="48dp"
+                android:layout_height="64dp"
+                android:maxLength="1"
+                android:inputType="number"
+                android:textColor="@color/accent_verified"
+                android:background="@drawable/otp_box_background"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginHorizontal="4dp"
+                android:cursorVisible="true"
+                android:focusableInTouchMode="true"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/countdownTxt"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_16dp"
-            android:text="00:00"
-            android:textColor="@color/accent_error"
-            style="@style/TextAppearance.App.HeadlineSmall"/>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_16dp">
+
+            <TextView
+                android:id="@+id/countdownTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:00"
+                android:textColor="@color/accent_error"
+                style="@style/TextAppearance.App.HeadlineSmall"/>
+
+            <Button
+                android:id="@+id/btnResend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resend_otp"
+                android:textColor="@color/accent_verified"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:visibility="gone"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnVerify"
@@ -110,6 +159,7 @@
             android:text="@string/button_verify"
             style="@style/PrimaryFilledButton" />
     </LinearLayout>
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -118,7 +168,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

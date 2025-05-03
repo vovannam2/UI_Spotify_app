@@ -11,19 +11,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 import com.example.spotify_app.R;
+
 import com.example.spotify_app.models.RegisterRequest;
-import com.example.spotify_app.models.RegisterResponse;
 import com.example.spotify_app.retrofit.RetrofitClient;
 import com.example.spotify_app.services.APIService;
+import com.example.spotify_app.models.RegisterResponse;
 
-import java.util.HashMap;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,6 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                     overlay.setVisibility(View.VISIBLE);
                     overlay.setFocusable(true);
                     overlay.setClickable(true);
+
                     RegisterRequest registerModel = new RegisterRequest();
                     registerModel.setFirstName(inputName.getText().toString());
                     registerModel.setEmail(inputemail.getText().toString());
@@ -102,8 +101,9 @@ public class RegisterActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     // Xử lý khi API trả về thành công
                     Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegisterActivity.this, GetStartedActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, OtpVerifyActivity.class);
                     intent.putExtra("type", "confirm");
+                    intent.putExtra("email", inputemail.getText());
                     startActivity(intent);
                     finish();
                 } else {

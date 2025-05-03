@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application introduction -->
+    <string name="app_name">CisnW</string>
+    <string name="app_description">Music for everyone</string>
+    <string name="resend_otp">Confirm</string>
+    <!--  Topic Album  -->
+    <string name="trending_title">Top trending</string>
+    <string name="trending_intro">Discover the most listened songs</string>
+    <string name="favorite_title">Favorite songs</string>
+    <string name="favorite_intro">The most loved songs</string>
+    <string name="topartist_title">Top artists</string>
+    <string name="topartist_intro">Artists with the highest number of followers</string>
+    <string name="newreleased_title">New released</string>
+    <string name="newreleased_intro">Enjoy quality songs that have just been released</string>
+
+    <string name="setting_title">Setting</string>
+
+    <!-- Menu items for bottom navigation bar and bottom sheet -->
+    <string name="menu_item_home">Home</string>
+    <string name="menu_item_search">Search</string>
+    <string name="menu_item_library">Library</string>
+    <string name="menu_item_profile">Profile</string>
+    <string name="menu_item_publish">Publish</string>
+    <string name="menu_item_add_favourite">Add to favourites</string>
+    <string name="menu_item_add_playlist">Add to playlist</string>
+    <string name="menu_item_remove_favourite">Remove from favorites</string>
+    <string name="menu_item_remove_playlist">Remove from playlist</string>
+
+    <!-- Menu item for tab layout in Library -->
+    <string name="menu_item_my_playlist">My playlists</string>
+    <string name="menu_item_my_favourite">Favorite songs</string>
+
+    <!-- Label -->
+    <string name="label_add_new_playlist">Create a new playlist</string>
+    <string name="label_add_new_favourite">Add favorite songs</string>
+    <string name="label_songs">%d songs</string>
+    <string name="label_enter_otp">Enter OTP code</string>
+    <string name="label_recomendation">Recommendation</string>
+    <string name="label_your_playlist">Your playlists</string>
+    <string name="label_clear_choices">Clear</string>
+    <string name="label_see_all">See all</string>
+    <string name="label_delete_history">Delete search histories</string>
+    <string name="label_comment">Comments</string>
+    <string name="label_hello_user">Hello %s 👋</string>
+    <string name="label_top_trending">🔥 Top trending</string>
+    <string name="label_top_favorite">❤️ Favorite songs</string>
+    <string name="label_top_artist">👑 Top artists</string>
+    <string name="label_new_released">✨ New released</string>
+    <string name="label_topic">🎧 Topic</string>
+    <string name="label_recommended">🌟 Recommendation</string>
+    <string name="label_popular_song">🔥 Popular songs</string>
+    <string name="label_forget_password">Forgot password?</string>
+    <string name="label_not_have_account">No account?</string>
+    <string name="label_have_account">Already have an account?</string>
+    <string name="label_gender">Gender</string>
+
+    <!-- Button text -->
+    <string name="label_system">System</string>
+    <string name="label_language">Language</string>
+    <string name="label_language_system">System</string>
+    <string name="label_language_vietnamese">Vietnamese</string>
+    <string name="label_language_english">English</string>
+    <string name="label_dark_mode">Dark mode</string>
+    <string name="label_account">Account</string>
+    <string name="label_change_password">Change password</string>
+    <string name="label_logout">Log out</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_lastname">Surname</string>
+    <string name="label_firstname">Firstname</string>
+    <string name="label_email">Email</string>
+    <string name="button_signup">Sign up</string>
+    <string name="button_login">Log in</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_verify">Verify</string>
+    <string name="button_get_otp">Get OTP code</string>
+    <string name="button_create">Create</string>
+    <string name="button_add">Add</string>
+    <string name="button_delete_playlist">Delete playlist</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_ok">Okay</string>
+    <string name="button_post">Post</string>
+    <string name="button_save">Save</string>
+    <string name="button_change_password">Change Password</string>
+    <string name="button_reset_password">Password retrieval</string>
+
+    <!-- InputField -->
+    <string name="hint_email">Enter your email</string>
+    <string name="hint_password">Enter your password</string>
+    <string name="hint_retype_password">Confirm your password</string>
+    <string name="hint_new_password">Enter your new password</string>
+    <string name="hint_retype_new_password">Confirm your new password</string>
+    <string name="hint_surname">Last name</string>
+    <string name="hint_firstname">First name</string>
+    <string name="hint_phone_number">Enter your phone number</string>
+    <string name="hint_old_password">Enter your old password</string>
+    <string name="hint_search">Search songs…</string>
+    <string name="check_box_remember">Remember me</string>
+    <string name="helper_text_email">This email is used to log in to your account</string>
+    <string name="helper_text_password">Password must be at least 6 characters, including upper and lower case letters, numbers and special characters</string>
+    <string name="error_required_field">Please enter this field</string>
+    <string name="error_invalid_email">Please enter a valid email</string>
+    <string name="error_invalid_phone">Please enter a valid phone number</string>
+    <string name="error_invalid_password">Please enter a valid password</string>
+    <string name="error_password_not_match">Password not matched</string>
+
+    <string name="error_wrong_account_infor">Username or password is incorrect</string>
+    <string name="radio_choice_male">Male</string>
+    <string name="radio_choice_female">Female</string>
+    <string name="playlist_name_placeholder">New playlist</string>
+    <string name="toast_added_song_to_favourite">Added song to favorites successfully</string>
+    <string name="toast_removed_song_to_favourite">Removed song from favorites successfully</string>
+    <string name="toast_created_playlist">Created playlist successfully</string>
+    <string name="toast_deleted_playlist">Delete playlist successfully</string>
+    <string name="toast_loged_in">Logged in successfully</string>
+    <string name="toast_followed">You already follow this artist</string>
+    <string name="toast_unfollowed">You have unfollowed this artist</string>
+
+    <string name="client_id">90467436569-ibtnp170t1rb3fhksb8nhp99b0garii8.apps.googleusercontent.com</string>
+    <string name="toast_added_song_to_playlist">Added song to playlist successfully</string>
+    <string name="toast_song_already_in_playlist">Skipped songs included in the playlist</string>
+    <string name="error_playlist_name_exists">This playlist already exists</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_confirm_delete">Confirm deletion</string>
+    <string name="dialog_message_confirm_delete">Are you sure you want to delete this playlist?</string>
+    <string name="dialog_title_confirm_restart">Restart application</string>
+    <string name="label_artist">Artist</string>
+    <string name="tab_all">All</string>
+    <string name="tab_songs">Songs</string>
+    <string name="tab_artist">Artists</string>
+    <string name="dialog_message_language_confirm_restart">Please restart the application to update this language</string>
+    <string name="dialog_message_theme_confirm_restart">Please restart the application to update this theme</string>
+
+    <!--Notification-->
+    <string name="channel_new_song">My Channel</string>
+    <string name="channel_description">Description Channel</string>
+    <string name="button_loggin_google">Log in with Google</string>
+    <string name="toast_updated_playlist_name">Playlist name updated successfully</string>
+    <string name="toast_removed_song_from_playlist">Removed from this playlist</string>
+    <string name="toast_forbiden">You cannot remove songs from this playlist</string>
+    <string name="label_notications">Notifications</string>
+    <string name="followed">Following</string>
+    <string name="follow">Follow</string>
+    <string name="view_more">See more</string>
+    <string name="new_release">✨ New released</string>
+</resources>

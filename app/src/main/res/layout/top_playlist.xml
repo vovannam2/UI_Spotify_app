@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/spacing_16dp"
+    android:background="@drawable/background_gradient">
+
+    <ImageView
+        android:id="@+id/imCoverPicture"
+        android:layout_width="@dimen/image_240dp"
+        android:layout_height="@dimen/image_240dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/lnPlaylistTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/imCoverPicture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/edtPlaylistTitle"
+            style="@style/TextAppearance.App.TitleLarge"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:maxWidth="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/spacing_4dp"/>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_edit_name"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            app:iconSize="@dimen/icon_24dp"
+            app:iconTint="?attr/colorOnSurfaceVariant"
+            app:icon="@drawable/ic_24dp_outline_edit"/>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/tvPlaylistIntro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/lnPlaylistTitle"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/neutral3"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/tvPlaylistSongCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlaylistIntro"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/neutral3"
+        android:textAlignment="center"
+        style="@style/TextAppearance.App.LabelLarge"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
