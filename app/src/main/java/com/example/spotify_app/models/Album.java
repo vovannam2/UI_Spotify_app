@@ -3,21 +3,21 @@ package com.example.spotify_app.models;
 import java.util.List;
 
 public class Album {
-    private Long id;
+    private Long idAlbum;
     private String name;
     private String image;
-
+    private List<Song> songs;
     public Album() {
     }
 
     private String artistName;
 
-    public Long getId() {
-        return id;
+    public Long getIdAlbum() {
+        return idAlbum;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdAlbum(Long idAlbum) {
+        this.idAlbum = idAlbum;
     }
 
     public String getName() {
@@ -42,5 +42,13 @@ public class Album {
 
     public void setArtistName(String artistName) {
         this.artistName = artistName;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 }

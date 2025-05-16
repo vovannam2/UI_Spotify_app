@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:id="@+id/relativeBaiHatHot"
-        android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="0dp">
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvTopBXH"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Top BXH"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-    </RelativeLayout>
+        android:text="Top BXH"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Danh sách bài hát -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBaiHatHot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relativeBaiHatHot"
+        android:layout_below="@id/tvTopBXH"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <!-- Nút xem thêm -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_viewmore_newsongs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_more"
+        android:layout_below="@id/recyclerViewBaiHatHot"
+        android:layout_centerHorizontal="true"
+        style="@style/OutlinedButton"
+        android:textAppearance="@style/TextAppearance.App.LabelMedium" />
+
 </RelativeLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_container"
+    tools:context=".activities.ArtistActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/included_top_playlist"
+                layout="@layout/top_playlist"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/included_top_playlist_option"
+                layout="@layout/top_playlist_option"
+                app:layout_constraintTop_toBottomOf="@+id/included_top_playlist"
+                tools:layout_editor_absoluteX="-41dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_popular_song"
+                style="@style/TextAppearance.App.TitleMedium"
+                android:layout_marginLeft="@dimen/spacing_8dp"
+                android:layout_marginTop="@dimen/spacing_12dp"
+                android:layout_marginBottom="@dimen/spacing_8dp"/>
+
+            <include layout="@layout/list_song"
+                android:id="@+id/included_list_song"
+                app:layout_constraintTop_toBottomOf="@id/included_top_playlist_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_viewmore_newsongs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_more"
+                android:layout_gravity="center_horizontal"
+                style="@style/OutlinedButton"
+                android:textAppearance="@style/TextAppearance.App.LabelMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_release"
+                style="@style/TextAppearance.App.TitleMedium"
+                android:textColor="@color/neutral5"
+                android:layout_marginLeft="@dimen/spacing_8dp"
+                android:layout_marginTop="@dimen/spacing_12dp"
+                android:layout_marginBottom="@dimen/spacing_8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/spacing_8dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/miniplayer"
+        layout="@layout/miniplayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"/>
+
+</RelativeLayout>

@@ -19,5 +19,13 @@
     <color name="transparent">#00000000</color>
     <color name="main_background">#19191b</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="text_secondary_dark">#3D3D3D</color>
+    <color name="background_light">#FFFFFFFF</color>
+    <color name="textSec">@color/text_secondary_light</color>
+    <color name="text_secondary_light">#B3B3B3</color>
+    <color name="text_light">#FAF9F6</color>
+    <color name="text_dark">#191414</color>
+    <color name="background_dark">#170f23</color>
+
 
 </resources>

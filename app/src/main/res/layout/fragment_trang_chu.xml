@@ -11,9 +11,25 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <include
+            android:id="@+id/appbar_home"
+            layout="@layout/appbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+        <fragment
+            android:id="@+id/fragmentBanner"
+            android:name="com.example.spotify_app.fragments.FragmentBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <fragment
             android:id="@+id/fragmentAlBumHot"
             android:name="com.example.spotify_app.fragments.Fragment_Album_Hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:id="@+id/fragmentArtirst"
+            android:name="com.example.spotify_app.fragments.Fragment_artists"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <fragment
@@ -23,6 +39,7 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
 
 
 

@@ -129,11 +129,11 @@ public class SearchMusicAdapter extends RecyclerView.Adapter<SearchMusicAdapter.
 
                     Song currentSong = baiHatArrayList.get(position);
 
-                    apiService.toggleLike(currentSong.getIdSong(), (long)idUser).enqueue(new Callback<GenericResponse<Check>>() {
+                    apiService.toggleLike(currentSong.getIdSong(), (long)idUser).enqueue(new Callback<GenericResponse<Boolean>>() {
                         @Override
-                        public void onResponse(Call<GenericResponse<Check>> call, Response<GenericResponse<Check>> response) {
+                        public void onResponse(Call<GenericResponse<Boolean>> call, Response<GenericResponse<Boolean>> response) {
                             if (response.isSuccessful() && response.body() != null) {
-                                boolean isLiked = response.body().getData().isData();
+                                boolean isLiked = response.body().getData();
                                 if (isLiked) {
                                     imgLuotThich.setImageResource(R.drawable.ic_red_love);
                                     Toast.makeText(context, "Đã thích bài hát", Toast.LENGTH_SHORT).show();
@@ -145,7 +145,7 @@ public class SearchMusicAdapter extends RecyclerView.Adapter<SearchMusicAdapter.
                         }
 
                         @Override
-                        public void onFailure(Call<GenericResponse<Check>> call, Throwable t) {
+                        public void onFailure(Call<GenericResponse<Boolean>> call, Throwable t) {
                             Toast.makeText(context, "Lỗi mạng!", Toast.LENGTH_SHORT).show();
                         }
                     });

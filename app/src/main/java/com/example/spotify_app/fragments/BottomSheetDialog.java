@@ -1,8 +1,11 @@
 package com.example.spotify_app.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,8 +18,11 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.spotify_app.R;
 import com.example.spotify_app.activities.AddSongToPlaylistActivity;
+import com.example.spotify_app.adapters.SongAdapter;
 import com.example.spotify_app.databinding.BottomSheetBinding;
 import com.example.spotify_app.internals.SharePrefManagerUser;
+import com.example.spotify_app.models.Check;
+import com.example.spotify_app.models.GenericResponse;
 import com.example.spotify_app.models.ResponseMessage;
 import com.example.spotify_app.models.SongLikedResponse;
 import com.example.spotify_app.models.User;
@@ -36,11 +42,14 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
     private String songName;
     private String artistName;
     private APIService apiService;
-    private User user;
-    private OnSongDeletedListener onSongDeletedListener;
 
-    public void setOnSongDeletedListener(OnSongDeletedListener listener) {
-        this.onSongDeletedListener = listener;
+    SongAdapter songAdapter;
+    private User user;
+    private OnSongActionListener songActionListener;
+
+
+    public void setOnSongActionListener(OnSongActionListener listener) {
+        this.songActionListener = listener;
     }
 
     public BottomSheetDialog() { }
@@ -71,7 +80,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
 
             // Change menu item favourite for navigation view if song liked
             apiService = RetrofitClient.getRetrofit().create(APIService.class);
-            apiService.isUserLikedSong(songId, (long) user.getId()).enqueue(new Callback<SongLikedResponse>() {
+            apiService.isUserLikedSong(songId,(long) user.getId() ).enqueue(new Callback<SongLikedResponse>() {
                 @Override
                 public void onResponse(Call<SongLikedResponse> call, Response<SongLikedResponse> response) {
                     if (response.isSuccessful() && response.body().isData()) {
@@ -79,6 +88,9 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
                                 .findItem(R.id.menu_item_favourite)
                                 .setTitle(getText(R.string.menu_item_remove_favourite))
                                 .setIcon(R.drawable.ic_24dp_filled_favorite);
+                        if (songActionListener != null) {
+                            songActionListener.onSongLikedStatusChanged(songId, true);
+                        }
                     }
                 }
 
@@ -90,71 +102,92 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
             binding.navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.menu_item_favourite:
-                            apiService.toggleLike(songId, (long) user.getId()).enqueue(new Callback<SongLikedResponse>() {
-                                @Override
-                                public void onResponse(Call<SongLikedResponse> call, Response<SongLikedResponse> response) {
-                                    if (response.isSuccessful()) {
-                                        if (response.body().isData()) {
-                                            Toast.makeText(getContext(), getText(R.string.toast_added_song_to_favourite), Toast.LENGTH_SHORT).show();
-                                            binding.navigationView.getMenu()
-                                                    .findItem(R.id.menu_item_favourite)
-                                                    .setTitle(getText(R.string.menu_item_remove_favourite))
-                                                    .setIcon(R.drawable.ic_24dp_filled_favorite);
-                                        } else {
-                                            Toast.makeText(getContext(), getText(R.string.toast_removed_song_to_favourite), Toast.LENGTH_SHORT).show();
-                                            binding.navigationView.getMenu()
-                                                    .findItem(R.id.menu_item_favourite)
-                                                    .setTitle(getText(R.string.menu_item_add_favourite))
-                                                    .setIcon(R.drawable.ic_24dp_outline_favorite);
+                    int itemId = item.getItemId();
+
+                    if (itemId == R.id.menu_item_favourite) {
+                        // tạm sửa là id cố định (long) user.getId()
+
+                        apiService.toggleLike(songId,(long)user.getId()).enqueue(new Callback<GenericResponse<Boolean>>() {
+                            @Override
+                            public void onResponse(Call<GenericResponse<Boolean>> call, Response<GenericResponse<Boolean>> response) {
+                                if (response.isSuccessful()) {
+                                    boolean isLiked = response.body().getData();
+                                    
+                                    // Cập nhật UI của BottomSheet
+                                    if (isLiked) {
+                                        Toast.makeText(requireContext(), getText(R.string.toast_added_song_to_favourite), Toast.LENGTH_SHORT).show();
+                                        binding.navigationView.getMenu()
+                                                .findItem(R.id.menu_item_favourite)
+                                                .setTitle(getText(R.string.menu_item_remove_favourite))
+                                                .setIcon(R.drawable.ic_24dp_filled_favorite);
+                                        if (songActionListener != null) {
+                                            songActionListener.onSongLikedStatusChanged(songId, true);
                                         }
+                                    } else {
+                                        Toast.makeText(requireContext(), getText(R.string.toast_removed_song_to_favourite), Toast.LENGTH_SHORT).show();
+                                        binding.navigationView.getMenu()
+                                                .findItem(R.id.menu_item_favourite)
+                                                .setTitle(getText(R.string.menu_item_add_favourite))
+                                                .setIcon(R.drawable.ic_24dp_outline_favorite);
+                                        if (songActionListener != null) {
+                                            songActionListener.onSongLikedStatusChanged(songId, false);
+                                        }
+                                    }
+                                    
+
+                                    
+                                    // Đóng BottomSheet sau khi xử lý xong
+                                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                                        BottomSheetDialog.this.dismiss();
+                                    }, 300);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<GenericResponse<Boolean>> call, Throwable t) {
+                                Log.d("test", "Lỗi mạng: " + t.getMessage());
+                                t.printStackTrace();
+                            }
+                        });
+
+                    } else if (itemId == R.id.menu_item_add_playlist) {
+                        Intent intent = new Intent(getContext(), AddSongToPlaylistActivity.class);
+                        intent.putExtra("SongId", songId);
+                        startActivity(intent);
+
+                    } else if (itemId == R.id.menu_item_remove_playlist) {
+                        Intent topicIntent = getActivity().getIntent();
+                        String topic = topicIntent.getStringExtra("topic");
+                        try {
+                            int number = Integer.parseInt(topic);
+                            apiService.deleteSongFromPlaylist((long) number, songId).enqueue(new Callback<ResponseMessage>() {
+                                @Override
+                                public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
+                                    if (response.isSuccessful()) {
+                                        if (songActionListener != null) {
+                                            songActionListener.onSongDeleted(songId);
+                                        }
+                                        Toast.makeText(getContext(), getText(R.string.toast_removed_song_from_playlist), Toast.LENGTH_SHORT).show();
                                         BottomSheetDialog.this.dismiss();
 
+                                        Intent intent = getActivity().getIntent();
+                                        getActivity().finish();
+                                        startActivity(intent);
                                     }
                                 }
 
                                 @Override
-                                public void onFailure(Call<SongLikedResponse> call, Throwable t) { }
+                                public void onFailure(Call<ResponseMessage> call, Throwable t) {
+                                    // xử lý lỗi nếu cần
+                                }
                             });
-
-                            break;
-                        case R.id.menu_item_add_playlist:
-                            Intent intent = new Intent(getContext(), AddSongToPlaylistActivity.class);
-                            intent.putExtra("SongId", songId);
-                            startActivity(intent);
-                            break;
-                        case R.id.menu_item_remove_playlist:
-                            Intent topicIntent = getActivity().getIntent();
-                            String topic = topicIntent.getStringExtra("topic");
-                            try {
-                                int number = Integer.parseInt(topic);
-                                apiService.deleteSongFromPlaylist((long) Integer.parseInt(topic), songId).enqueue(new Callback<ResponseMessage>() {
-                                    @Override
-                                    public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
-                                        if (response.isSuccessful()) {
-                                            if (onSongDeletedListener != null) {
-                                                onSongDeletedListener.onSongDeleted(songId);
-                                            }
-                                            Toast.makeText(getContext(), getText(R.string.toast_removed_song_from_playlist), Toast.LENGTH_SHORT).show();
-                                            BottomSheetDialog.this.dismiss();
-
-                                            Intent intent = getActivity().getIntent();
-                                            getActivity().finish();
-                                            startActivity(intent);
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ResponseMessage> call, Throwable t) { }
-                                });
-                            } catch (NumberFormatException e) {
-                                e.printStackTrace();
-                                Toast.makeText(getContext(), getText(R.string.toast_forbiden), Toast.LENGTH_SHORT).show();
-                                BottomSheetDialog.this.dismiss();
-                            }
-                            break;
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), getText(R.string.toast_forbiden), Toast.LENGTH_SHORT).show();
+                            BottomSheetDialog.this.dismiss();
+                        }
                     }
+
                     return false;
                 }
 
@@ -163,7 +196,9 @@ public class BottomSheetDialog extends BottomSheetDialogFragment {
 
         return view;
     }
-    public interface OnSongDeletedListener {
+
+    public interface OnSongActionListener {
+        void onSongLikedStatusChanged(Long songId, boolean isLiked);
         void onSongDeleted(Long songId);
     }
 }

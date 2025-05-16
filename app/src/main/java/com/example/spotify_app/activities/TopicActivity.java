@@ -1,5 +1,7 @@
 package com.example.spotify_app.activities;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,27 +14,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.media3.common.MediaMetadata;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.spotify_app.R;
+import com.example.spotify_app.adapters.ArtistAdapter;
+import com.example.spotify_app.adapters.NgheSiAdapter_all;
 import com.example.spotify_app.adapters.SongAdapter;
 import com.example.spotify_app.decorations.BottomOffsetDecoration;
 import com.example.spotify_app.fragments.SongDetailFragment;
 import com.example.spotify_app.helpers.DialogHelper;
 import com.example.spotify_app.helpers.GradientHelper;
 import com.example.spotify_app.helpers.SongToMediaItemHelper;
+import com.example.spotify_app.internals.SharePrefManagerUser;
 import com.example.spotify_app.listeners.DialogClickListener;
 import com.example.spotify_app.listeners.PaginationScrollListener;
 import com.example.spotify_app.models.Album;
+import com.example.spotify_app.models.Artist;
+import com.example.spotify_app.models.ArtistResponse;
 import com.example.spotify_app.models.GenericResponse;
 import com.example.spotify_app.models.Playlist;
 import com.example.spotify_app.models.PlaylistResponse;
 import com.example.spotify_app.models.ResponseMessage;
 import com.example.spotify_app.models.Song;
 import com.example.spotify_app.models.SongResponse;
+import com.example.spotify_app.models.User;
 import com.example.spotify_app.retrofit.RetrofitClient;
 import com.example.spotify_app.services.APIService;
 import com.example.spotify_app.services.ExoPlayerQueue;
@@ -48,7 +57,11 @@ import retrofit2.Response;
 public class TopicActivity extends BaseActivity {
     private String topic;
     private List<Song> songList;
+
+    List<Artist> artists;
     private SongAdapter songAdapter;
+
+    NgheSiAdapter_all ngheSiAdapter_all;
     private int page, size, totalPages;
     private boolean isLoading = false;
     private boolean isLastPage = false;
@@ -67,14 +80,19 @@ public class TopicActivity extends BaseActivity {
     MaterialButton editPlaylistNameButton;
     RecyclerView rvListSong;
     View includeTopPlaylist;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
+        EdgeToEdge.enable(this);
         initMiniPlayer();
         exoPlayerQueue = ExoPlayerQueue.getInstance();
         topic = getIntent().getStringExtra("topic");
+        user = SharePrefManagerUser.getInstance(getApplicationContext()).getUser();
+
+        ngheSiAdapter_all = new NgheSiAdapter_all(getApplicationContext(), new ArrayList<>(), artistItemClick);
 
         includeTopPlaylist = findViewById(R.id.included_top_playlist);
         coverPic = includeTopPlaylist.findViewById(R.id.imCoverPicture);
@@ -115,6 +133,7 @@ public class TopicActivity extends BaseActivity {
 
         apiService = RetrofitClient.getRetrofit().create(APIService.class);
         songList = new ArrayList<>();
+
         songAdapter = new SongAdapter(this, songList, new SongAdapter.OnItemClickListener() {
             @Override
             public void onSongClick(int position) {
@@ -158,7 +177,7 @@ public class TopicActivity extends BaseActivity {
                 tvPlaylistIntro.setText(R.string.trending_intro);
                 deletePlaylistButton.setVisibility(View.GONE);
 
-                fetchSongs(apiService.getMostViewSong(page, size));
+                fetchSongs(apiService.getMostViewSong(page, size,"views"));
                 RecyclerView.ItemDecoration itemDecoration = new BottomOffsetDecoration(120);
                 rvListSong.addItemDecoration(itemDecoration);
                 rvListSong.setAdapter(songAdapter);
@@ -168,7 +187,7 @@ public class TopicActivity extends BaseActivity {
                 page = 0;
                 size = 10;
                 coverPic.setImageResource(R.drawable.favorite_cover);
-                GradientHelper.applyGradient(this, includeTopPlaylist, R.drawable.favorite_cover);
+                GradientHelper.applyGradient(this, includeTopPlaylist, R.drawable.topnghesi);
                 edtPlaylistTitle.setText(R.string.favorite_title);
                 tvPlaylistIntro.setText(R.string.favorite_intro);
                 deletePlaylistButton.setVisibility(View.GONE);
@@ -177,11 +196,12 @@ public class TopicActivity extends BaseActivity {
                 rvListSong.setAdapter(songAdapter);
                 break;
             case "topArtist":
-                coverPic.setImageResource(R.drawable.top_artist_cover);
-                GradientHelper.applyGradient(this, includeTopPlaylist, R.drawable.top_artist_cover);
+                coverPic.setImageResource(R.drawable.topnghesi);
+                GradientHelper.applyGradient(this, includeTopPlaylist, R.drawable.topnghesi);
                 edtPlaylistTitle.setText(R.string.topartist_title);
                 tvPlaylistIntro.setText(R.string.topartist_intro);
                 includeOption.setVisibility(View.GONE);
+                GetTopArtist();
                 break;
             case "newReleased":
                 songList.clear();
@@ -211,6 +231,27 @@ public class TopicActivity extends BaseActivity {
                     deletePlaylistIfNeeded(Integer.parseInt(topic));
                 }
                 rvListSong.setAdapter(songAdapter);
+
+                apiService.getSongLikedByIdUser(user.getId()).enqueue(new Callback<GenericResponse<List<Song>>>() {
+                    @Override
+                    public void onResponse(Call<GenericResponse<List<Song>>> call, Response<GenericResponse<List<Song>>> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            List<Long> likedSongIds = new ArrayList<>();
+                            for (Song song : response.body().getData()) {
+                                likedSongIds.add(song.getIdSong());
+                            }
+                            // Thêm log để kiểm tra
+                            Log.d("ArtistActivity", "Liked Song IDs: " + likedSongIds);
+                            // Gọi phương thức adapter để cập nhật hình ảnh trái tim
+                            songAdapter.setLikedSongIds(likedSongIds);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GenericResponse<List<Song>>> call, Throwable t) {
+                        Log.e("API_FAILURE", "Failed to fetch liked songs: " + t.getMessage());
+                    }
+                });
                 invalidateOptionsMenu();
                 break;
         }
@@ -247,6 +288,14 @@ public class TopicActivity extends BaseActivity {
             }
         });
     }
+    private final NgheSiAdapter_all.OnItemClickListener artistItemClick = new NgheSiAdapter_all.OnItemClickListener() {
+        @Override
+        public void onItemClick(Artist artist) {
+            Intent intent = new Intent(getApplicationContext(), ArtistActivity.class); //// sẽ thay thế bằng 1 actitvity khác
+            intent.putExtra("artistId", artist.getIdUser());
+            startActivity(intent);
+        }
+    };
 
     private void getPlaylistByAlbumId(int albumId) {
         apiService.getAlbumById(albumId).enqueue(new Callback<GenericResponse<Album>>() {
@@ -297,7 +346,7 @@ public class TopicActivity extends BaseActivity {
                     Call<GenericResponse<SongResponse>> call = null;
                     switch (topic) {
                         case "trending":
-                            call = apiService.getMostViewSong(page, size);
+                            call = apiService.getMostViewSong(page, size,"views");
                             break;
                         case "favorite":
                             call = apiService.getMostLikeSong(page, size);
@@ -494,7 +543,7 @@ public class TopicActivity extends BaseActivity {
                                 if (response.isSuccessful()) {
                                     Toast.makeText(TopicActivity.this, getText(R.string.toast_deleted_playlist), Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(TopicActivity.this, MainActivity.class);
-                                    intent.putExtra("fragmentId", R.id.fragment_library);
+                                   // intent.putExtra("fragmentId", R.id.fragment_library);
                                     startActivity(intent);
                                 }
                             }
@@ -515,6 +564,28 @@ public class TopicActivity extends BaseActivity {
                 dialog.setNegativeButtonContent(getString(R.string.button_cancel));
                 dialog.setPositiveButtonColor(R.color.error);
 
+            }
+        });
+    }
+    private void GetTopArtist(){
+        apiService = RetrofitClient.getRetrofit().create(APIService.class);
+        apiService.getAllArtists(0, 5).enqueue(new Callback<GenericResponse<ArtistResponse>>() {
+            @Override
+            public void onResponse(Call<GenericResponse<ArtistResponse>> call, Response<GenericResponse<ArtistResponse>> response) {
+                if (response.isSuccessful()) {
+                    artists = new ArrayList<>();
+                    artists = response.body().getData().getContent();
+                    Log.d("HomeFragment", "onResponse: Artist get succesfully " + artists.size());
+                    ngheSiAdapter_all.setArtistList(artists);
+                    rvListSong.setHasFixedSize(true);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false );
+                    rvListSong.setLayoutManager(layoutManager);
+                    rvListSong.setAdapter(ngheSiAdapter_all);
+                }
+            }
+            @Override
+            public void onFailure(Call<GenericResponse<ArtistResponse>> call, Throwable t) {
+                Log.d("ErrorReponse", t.getMessage());
             }
         });
     }

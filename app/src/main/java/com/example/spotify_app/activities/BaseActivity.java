@@ -22,6 +22,7 @@ import com.example.spotify_app.services.ExoBuilderService;
 import com.example.spotify_app.services.ExoPlayerQueue;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.example.spotify_app.fragments.SongDetailFragment;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -56,6 +57,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                             MediaMetadata metadata = mediaItem.mediaMetadata;
                             updateMiniplayer(metadata);
                             progressBarUpdater.startUpdating();
+                            
+                            // Cập nhật gradient cho SongDetailActivity nếu đang hiển thị
+                            if (getClass().equals(SongDetailActivity.class)) {
+                                View container = findViewById(R.id.container);
+                                if (container != null && metadata.artworkUri != null) {
+                                    GradientHelper.applyDoubleGradient(getApplicationContext(), container, String.valueOf(metadata.artworkUri));
+                                }
+                            }
                         }
                     }
                 });

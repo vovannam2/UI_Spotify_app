@@ -44,7 +44,10 @@ public class ExoService extends Service {
         exoPlayerQueue = ExoPlayerQueue.getInstance();
         exoPlayer = new ExoPlayer.Builder(this).build();
         songViewManager = SongViewManager.getInstance();
-        mediaSession = new MediaSession.Builder(this, exoPlayer).build();
+        //mediaSession = new MediaSession.Builder(this, exoPlayer).build();
+        mediaSession = new MediaSession.Builder(this, exoPlayer)
+            .setId("exo_player_session") // hoặc bất kỳ chuỗi nào bạn muốn, miễn là không rỗng và duy nhất
+            .build();
         createNotificationChannel();
         exoPlayer.addListener(new Player.Listener() {
             @Override

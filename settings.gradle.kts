@@ -16,8 +16,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
+
 }
+
 
 rootProject.name = "Spotify_app"
 include(":app")

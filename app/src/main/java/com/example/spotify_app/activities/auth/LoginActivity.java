@@ -3,6 +3,7 @@ package com.example.spotify_app.activities.auth;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.spotify_app.R;
 import com.example.spotify_app.activities.BaseActivity;
+import com.example.spotify_app.activities.MainActivity;
 import com.example.spotify_app.internals.SharePrefManagerAccount;
 import com.example.spotify_app.internals.SharePrefManagerUser;
 import com.example.spotify_app.models.ForgotPassword;
@@ -54,7 +56,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        EdgeToEdge.enable(this);
         mapping();
+        fillText();
 
         textCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +83,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     login(req);
                 }
+            }
+        });
+        forgotPasswordText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -109,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     SharePrefManagerUser.getInstance(getApplicationContext()).loginSuccess(user);
 
-                    Intent intent = new Intent(LoginActivity.this, BaseActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -153,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseMessage> call, Throwable t) {
                 hideOverlay();
+                Log.e("API_ERROR", "Call failed: " + t.getMessage(), t); // In chi tiết lỗi
                 Toast.makeText(LoginActivity.this, "Call API Error", Toast.LENGTH_SHORT).show();
             }
         });

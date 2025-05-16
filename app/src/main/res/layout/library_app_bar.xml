@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/included_top_app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_app_bar_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="@dimen/spacing_16dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="?attr/colorOnPrimaryContainer">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imv_user_avatar"
+        android:layout_width="@dimen/image_40dp"
+        android:layout_height="@dimen/image_40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_song_avt_holder"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/menu_item_library"
+        android:paddingHorizontal="@dimen/spacing_8dp"
+        style="@style/TextAppearance.App.TitleMedium" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_notification"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_32dp_outline_notifications"
+        app:iconSize="@dimen/icon_32dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_setting"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_32dp_outline_settings"
+        app:iconSize="@dimen/icon_32dp"/>
+
+
+</LinearLayout>

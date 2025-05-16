@@ -21,6 +21,7 @@ import com.example.spotify_app.retrofit.RetrofitClient;
 import com.example.spotify_app.services.APIService;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
@@ -28,9 +29,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder> implements BottomSheetDialog.OnSongDeletedListener{
+public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder> implements BottomSheetDialog.OnSongActionListener {
     private final Context context;
     private List<Song> songList;
+
+    private List<Long> likedSongIds;
 
     private final OnItemClickListener onItemClickListener;
 
@@ -44,6 +47,48 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
         this.songList = songList;
         notifyDataSetChanged();
     }
+    public void setLikedSongIds(List<Long> likedSongIds) {
+        this.likedSongIds = likedSongIds;
+        notifyDataSetChanged();
+    }
+    public void toggleLikeStatus(Long songId) {
+        if (likedSongIds == null) {
+            likedSongIds = new ArrayList<>();
+        }
+        
+        for (int i = 0; i < songList.size(); i++) {
+            if (songList.get(i).getIdSong().equals(songId)) {
+                if (likedSongIds.contains(songId)) {
+                    likedSongIds.remove(songId);
+                } else {
+                    likedSongIds.add(songId);
+                }
+                notifyItemChanged(i);
+                break;
+            }
+        }
+    }
+    public void onSongLikedStatusChanged(Long songId, boolean isLiked) {
+        if (likedSongIds == null) {
+            likedSongIds = new ArrayList<>();
+        }
+        
+        for (int i = 0; i < songList.size(); i++) {
+            if (songList.get(i).getIdSong().equals(songId)) {
+                if (isLiked) {
+                    if (!likedSongIds.contains(songId)) {
+                        likedSongIds.add(songId);
+                    }
+                } else {
+                    likedSongIds.remove(songId);
+                }
+                notifyItemChanged(i);
+                break;
+            }
+        }
+    }
+
+
 
     @NonNull
     @Override
@@ -60,22 +105,14 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
         Glide.with(context).load(song.getImage())
                 .transform(new RoundedCornersTransformation(10, 0))
                 .into(holder.imSongAvt);
-        holder.songActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog();
-                bottomSheetDialog.setContent(song.getIdSong(), song.getImage(), song.getName(), song.getArtistName());
-                bottomSheetDialog.setOnSongDeletedListener(SongAdapter.this);
-                bottomSheetDialog.show(((androidx.fragment.app.FragmentActivity) context)
-                        .getSupportFragmentManager(), "ModalBottomSheet");
-            }
-        });
+
         APIService apiService = RetrofitClient.getRetrofit().create(APIService.class);
         apiService.getArtistsBySongId(song.getIdSong()).enqueue(new Callback<GenericResponse<List<Artist>>>() {
             @Override
             public void onResponse(Call<GenericResponse<List<Artist>>> call, Response<GenericResponse<List<Artist>>> response) {
                 if (response.body() != null && response.body().getData() != null) {
                     Artist artist = response.body().getData().get(0);
+                    song.setArtistName(artist.getNickname());
                     holder.tvSongArtist.setText(artist.getNickname());
                 }
             }
@@ -87,6 +124,23 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             }
 
         });
+        holder.songActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog();
+                bottomSheetDialog.setContent(song.getIdSong(), song.getImage(), song.getName(), song.getArtistName());
+                bottomSheetDialog.setOnSongActionListener(SongAdapter.this);
+                bottomSheetDialog.show(((androidx.fragment.app.FragmentActivity) context)
+                        .getSupportFragmentManager(), "ModalBottomSheet");
+            }
+        });
+        // Kiểm tra trạng thái yêu thích
+        if (likedSongIds != null && likedSongIds.contains(song.getIdSong())) {
+            holder.imgLuotThich.setImageResource(R.drawable.ic_red_love);
+        } else {
+            holder.imgLuotThich.setImageResource(R.drawable.ic_white_love);
+        }
+
     }
 
     @Override
@@ -107,7 +161,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     }
 
     public class SongViewHolder extends RecyclerView.ViewHolder {
-        ImageView imSongAvt;
+        ImageView imSongAvt,imgLuotThich;
         TextView tvSongTitle, tvSongArtist;
         MaterialButton songActionButton;
         public SongViewHolder(@NonNull View itemView) {
@@ -116,6 +170,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             tvSongTitle = itemView.findViewById(R.id.tvSongTitle);
             tvSongArtist = itemView.findViewById(R.id.tvSongArtist);
             songActionButton = itemView.findViewById(R.id.btnSongOption);
+            imgLuotThich = itemView.findViewById(R.id.imageViewLuotThich);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

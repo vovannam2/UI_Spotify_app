@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -133,6 +134,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 overlay.setVisibility(View.INVISIBLE);
                 overlay.setFocusable(false);
                 overlay.setClickable(false);
+                Log.d("API_CALL", "API call failed", t);  // in full lỗi stacktrace
                 Toast.makeText(ForgotPasswordActivity.this, "Call API Error!", Toast.LENGTH_SHORT).show();
             }
         });

@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -42,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        EdgeToEdge.enable(this);
         inputName = findViewById(R.id.txtName);
         inputemail = findViewById(R.id.txtEmail);
         inputPassword = findViewById(R.id.txtPwd);

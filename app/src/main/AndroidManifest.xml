@@ -27,13 +27,31 @@
             android:name=".activities.auth.ResetPasswordActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.auth.GetStartedActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.auth.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.IntroActivity"
+            android:name=".activities.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddFavouriteSongsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddSongToPlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CreatePlaylistActivity"
             android:exported="false" />
         <activity
             android:name=".activities.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".activities.auth.GetStartedActivity"
@@ -51,7 +69,13 @@
             android:name=".activities.SongDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.TopicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ArtistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -84,6 +85,7 @@ public class SongDetailFragment extends BottomSheetDialogFragment {
     private APIService apiService;
     private SongViewManager songViewManager;
     private User user;
+    private View container;
 
     public SongDetailFragment() {
 
@@ -293,8 +295,35 @@ public class SongDetailFragment extends BottomSheetDialogFragment {
                 postComment();
             }
         });
+        ImageButton btnBack = view.findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().finish();  // Đóng fragment, quay về activity phía sau
+            }
+        });
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        
+        // Khởi tạo các view
+        container = view.findViewById(R.id.container);
+        
+        // Lấy thông tin bài hát hiện tại
+        ExoPlayer exoPlayer = ((BaseActivity) requireActivity()).getExoPlayer();
+        if (exoPlayer != null && exoPlayer.getCurrentMediaItem() != null) {
+            MediaMetadata metadata = exoPlayer.getCurrentMediaItem().mediaMetadata;
+            if (metadata != null && metadata.artworkUri != null) {
+                // Áp dụng gradient dựa trên ảnh bài hát
+                GradientHelper.applyDoubleGradient(requireContext(), container, String.valueOf(metadata.artworkUri));
+            }
+        }
+        
+        // ... rest of your existing code ...
     }
 
     private void postComment() {

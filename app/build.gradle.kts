@@ -29,6 +29,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -75,4 +78,7 @@ dependencies {
 
     // SwipeRefreshLayout
     implementation(libs.swiperefreshlayout)
+    implementation (libs.slidingrootnav)
+    implementation (libs.androidx.core)
+    implementation(libs.circleindicator)
 }

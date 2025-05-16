@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.spotify_app.R;
+import com.example.spotify_app.activities.TopicActivity;
 import com.example.spotify_app.adapters.AlbumAdapter;
 import com.example.spotify_app.models.Album;
 import com.example.spotify_app.models.GenericResponse;
@@ -38,6 +39,8 @@ public class Fragment_Album_Hot extends Fragment {
     RecyclerView recyclerViewAlbum;
     TextView tvXemThemAlbum;
     AlbumAdapter albumAdapter;
+
+    private List<Album> listAlbum = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,13 +52,14 @@ public class Fragment_Album_Hot extends Fragment {
     }
 
     private void init() {
-        /*tvXemThemAlbum.setOnClickListener(new View.OnClickListener() {
+        tvXemThemAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AllAlbumListActivity.class);
+                Intent intent = new Intent(getActivity(), TopicActivity.class);
+                intent.putExtra("topic", "topArtist");
                 startActivity(intent);
             }
-        });*/
+        });
     }
 
     private void bindingView() {
@@ -65,16 +69,24 @@ public class Fragment_Album_Hot extends Fragment {
 
     private void getData() {
         APIService apiService = RetrofitClient.getRetrofit().create(APIService.class);
-
+        albumAdapter = new AlbumAdapter(getActivity(), listAlbum, new AlbumAdapter.OnAlbumClickListener() {
+            @Override
+            public void onAlbumClick(Album album) {
+                Intent intent = new Intent(getContext(), TopicActivity.class);
+                intent.putExtra("albumId", String.valueOf(album.getIdAlbum()));
+                intent.putExtra("topic", "1");
+                startActivity(intent);
+            }
+        });
         // Gọi API với GenericResponse
         Call<GenericResponse<List<Album>>> callback = apiService.getAlbumHot();
         callback.enqueue(new Callback<GenericResponse<List<Album>>>() {
             @Override
             public void onResponse(Call<GenericResponse<List<Album>>> call, Response<GenericResponse<List<Album>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Album>listAlbum = response.body().getData();
-                    ArrayList<Album> albumArrayList = new ArrayList<>(listAlbum);
-                    albumAdapter = new AlbumAdapter(getActivity(), albumArrayList);
+                    listAlbum.clear();
+                    listAlbum.addAll(response.body().getData());
+                    albumAdapter.notifyDataSetChanged();
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                     linearLayoutManager.setOrientation(HORIZONTAL);
                     recyclerViewAlbum.setLayoutManager(linearLayoutManager);

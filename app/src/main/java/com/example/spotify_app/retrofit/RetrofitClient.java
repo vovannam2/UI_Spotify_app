@@ -1,6 +1,12 @@
 package com.example.spotify_app.retrofit;
 
 
+import com.example.spotify_app.utils.Const;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -10,15 +16,15 @@ public class RetrofitClient {
     public static Retrofit getRetrofit() {
         if(retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://172.16.0.111:8989/api/v1/")
-                   // .client(getClient())
+                    .baseUrl("http://10.0.227.42:8989/api/v1/")
+                    .client(getClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit;
     }
 
-    /*public static OkHttpClient getClient() {
+    public static OkHttpClient getClient() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(chain -> {
                     Request newRequest = chain.request().newBuilder()
                             .addHeader("Authorization", " Bearer " + Const.getAccessToken())
@@ -29,5 +35,5 @@ public class RetrofitClient {
                 .readTimeout(100,TimeUnit.SECONDS)
                 .build();
         return client;
-    }*/
+    }
 }

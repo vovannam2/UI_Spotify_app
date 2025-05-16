@@ -16,6 +16,7 @@
         app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="6dp">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,6 +30,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="6dp">
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvSongAvt"
@@ -80,6 +82,15 @@
                         android:textColor="@color/neutral3"/>
 
                 </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageViewLuotThich"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_white_love"
+                    app:layout_constraintEnd_toStartOf="@id/btnSongOption"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="8dp"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSongOption"

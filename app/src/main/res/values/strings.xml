@@ -155,4 +155,6 @@
     <string name="tab_songs">Bài hát</string>
     <string name="tab_artist">Nghệ sĩ</string>
     <string name="new_release">✨ Mới phát hành</string>
+    <string name="back_button"> Back</string>
+
 </resources>

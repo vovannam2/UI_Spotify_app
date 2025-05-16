@@ -2,6 +2,7 @@ package com.example.spotify_app.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.spotify_app.R;
+import com.example.spotify_app.activities.TopicActivity;
 import com.example.spotify_app.models.Album;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
     Context context;
-    ArrayList<Album> albumArrayList;
+    private List<Album> albumList;
+
+    private OnAlbumClickListener listener;
 
 
-    public AlbumAdapter(Context context, ArrayList<Album> albumArrayList) {
+    public AlbumAdapter(Context context,  List<Album> albumList,OnAlbumClickListener onAlbumClickListener) {
         this.context = context;
-        this.albumArrayList = albumArrayList;
+        this.albumList = albumList;
+        this.listener = onAlbumClickListener;
     }
 
     @NonNull
@@ -37,15 +43,26 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Album album = albumArrayList.get(position);
+        Album album = albumList.get(position);
         holder.tvTenAlbum.setText(album.getName());
         holder.tvCaSiAlbum.setText(album.getArtistName());
         Picasso.get().load(album.getImage()).into(holder.imgHinhAlbum);
+        
+        Log.d("AlbumAdapter", "Binding album at position " + position + ": ID=" + album.getIdAlbum() + ", Name=" + album.getName());
+        
+        holder.itemView.setOnClickListener(v -> {
+            Log.d("AlbumAdapter", "Clicked album at position " + position + ": ID=" + album.getIdAlbum() + ", Name=" + album.getName());
+            if (listener != null) {
+                listener.onAlbumClick(album);
+            } else {
+                Log.e("AlbumAdapter", "Listener is null!");
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return albumArrayList.size();
+        return albumList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -56,15 +73,10 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
             imgHinhAlbum = itemView.findViewById(R.id.imageviewalbum);
             tvTenAlbum = itemView.findViewById(R.id.tvTenAlbum);
             tvCaSiAlbum = itemView.findViewById(R.id.tvTenCaSiAlbum);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   /* Intent intent = new Intent(context, MusicListActivity.class);
-                    intent.putExtra("album", albumArrayList.get(getPosition()));
-                    context.startActivity(intent);*/
-                }
-            });
         }
+    }
+    public interface OnAlbumClickListener {
+        void onAlbumClick(Album album);
     }
 
 }
