@@ -41,11 +41,6 @@ This is the final project for the **Mobile Programming** course (Class: MOPR3312
 - Edit account information
 - Switch between light/dark themes and English/Vietnamese language
 
-### 🎵 Artist Features
-- Upload songs
-- Manage published songs
-- View statistics: plays, likes, comments
-
 ---
 
 ## ✅ Achievements
